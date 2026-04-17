@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <!-- Google Analytics (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6DYJ3S4PW0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6DYJ3S4PW0');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="iJyaxMFFVb_1gl_dreee-B0yxWKLTP6tmW1xwtJkJAI" />
+    
+    <!-- SEO - כותרת ותיאור -->
+    <title>נטו חופש | כמה ימי לימודים נשארו עד החופש הגדול 2026? (בלי שבתות שישי וחגים)</title>
+    
+    <!-- Favicon (הסמל שיופיע מעל שם האתר בחיפוש גוגל) וסמלילים למסך הבית -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E☀️%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='white'/%3E%3Ctext x='50' y='54' dominant-baseline='central' text-anchor='middle' font-size='75'%3E☀️%3C/text%3E%3C/svg%3E">
+    
+    <!-- PWA -->
+    <link rel="manifest" id="manifest-link">
+    <meta name="theme-color" content="#eab308">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="נטו">
+    
+    <!-- Confetti Script -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    
+    <meta name="description" content="בודקים מתי החופש הגדול? מחשבון ספירה לאחור המראה בדיוק כמה ימים נשארו לחופש הגדול 2026 בלי שישי שבת וחגים! מעודכן לפי לוח חופשות משרד החינוך.">
+    <meta name="keywords" content="מתי החופש הגדול, כמה ימים נשארו לחופש הגדול, החופש הגדול 2026, מתי יוצאים לחופש הגדול, מתי מסתיימת שנת הלימודים, ספירה לאחור לחופש הגדול, תאריך החופש הגדול, כמה זמן נשאר לחופש הגדול, לוח חופשות משרד החינוך, מתי מסיימים ללמוד, כמה ימים נשארו לחופש הגדול בלי שישי שבת וחגים">
+    <meta name="author" content="Neto App">
+    <link rel="canonical" href="http://neto-hofesh.co.il/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://neto-hofesh.co.il/">
+    <meta property="og:title" content="נטו חופש | כמה ימי לימודים נשארו עד החופש הגדול 2026? (בלי שבתות שישי וחגים)">
+    <meta property="og:description" content="בודקים מתי החופש הגדול? מחשבון ספירה לאחור המראה בדיוק כמה ימים נשארו לחופש הגדול בלי שישי שבת וחגים! כנסו לבדוק.">
+    <meta property="og:image" content="http://neto-hofesh.co.il/preview-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #eab308; 
+            --primary-hover: #ca8a04;
+            --accent: #0ea5e9; 
+            --whatsapp-green: #25d366;
+            --whatsapp-hover: #22c35e;
+            --text-main: #1e293b; 
+            --text-muted: #64748b;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Rubik', sans-serif; 
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body { 
+            background: #ffffff;
+            color: var(--text-main); 
+            display: flex; 
+            justify-content: center; 
+            align-items: flex-start;
+            min-height: 100vh; 
+            padding: 20px; 
+            overflow-x: hidden;
+        }
+
+        .sun-background {
+            position: fixed;
+            top: 50%; left: 50%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(254, 240, 138, 0.6) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: -1; transform: translate3d(-50%, -50%, 0);
+            animation: sun-pulse 10s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes sun-pulse {
+            from { transform: translate3d(-50%, -50%, 0) scale(1); opacity: 0.4; }
+            to { transform: translate3d(-50%, -50%, 0) scale(1.3); opacity: 0.7; }
+        }
+
+        .app-container { width: 100%; max-width: 480px; position: relative; padding-bottom: 40px; }
+        
+        #setup-screen { display: flex; flex-direction: column; gap: 28px; animation: fadeIn 0.8s ease-out; }
+        
+        .setup-header { 
+            text-align: center; 
+            margin-bottom: 5px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .setup-header .icon { 
+            font-size: 64px; 
+            margin-bottom: 10px; 
+            animation: float-main 3s infinite ease-in-out; 
+            display: inline-block; 
+            filter: drop-shadow(0 10px 15px rgba(234, 179, 8, 0.2)); 
+        }
+
+        @keyframes float-main {
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -8px, 0); }
+        }
+        
+        .setup-header h1 { 
+            color: var(--primary); 
+            font-size: 34px; 
+            font-weight: 900; 
+            letter-spacing: -1.5px; 
+            line-height: 1; 
+        }
+        .setup-header h1 span { 
+            display: block; 
+            font-size: 58px; 
+            margin-bottom: 8px; 
+            letter-spacing: -3px;
+        }
+        .setup-header p { color: var(--text-muted); font-size: 17px; font-weight: 700; margin-top: 14px; }
+
+        .setup-step h3 { font-size: 18px; color: var(--text-main); margin-bottom: 14px; font-weight: 700; text-align: center;}
+
+        .school-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+        .option-card {
+            background: rgba(255, 255, 255, 0.9); border: 2px solid #f1f5f9; border-radius: 20px;
+            padding: 24px 10px; text-align: center; cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex;
+            flex-direction: row; justify-content: center; align-items: center; gap: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+        }
+
+        .option-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .option-card input { display: none; }
+        .option-card.selected { border-color: var(--primary); background: #fefce8; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(234, 179, 8, 0.15); }
+
+        .option-emoji { font-size: 28px; }
+        .option-title { font-weight: 900; font-size: 16px; }
+        
+        .school-hint {
+            text-align: center; margin-top: 5px; font-size: 13px; color: var(--primary-hover);
+            font-weight: 700; background: #fefce8; padding: 10px; border-radius: 16px;
+            border: 2px solid #fef08a;
+        }
+
+        .toggle-container {
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.9); padding: 14px 20px; border-radius: 18px;
+            border: 2px solid #f1f5f9; cursor: pointer;
+        }
+
+        .toggle-title { font-size: 17px; font-weight: 800; color: var(--text-main); margin-bottom: 2px; text-align: center; }
+        .toggle-hint { font-size: 14px; color: var(--text-muted); font-weight: 600; text-align: center; }
+        
+        .smiley-switch {
+            position: relative; display: inline-block; width: 56px; height: 30px;
+            background: #f1f5f9; border-radius: 40px; border: 2px solid #e2e8f0; transition: 0.4s;
+        }
+        .smiley-switch input { opacity: 0; width: 0; height: 0; }
+        .smiley-handle {
+            position: absolute; top: 1px; left: 1px; width: 24px; height: 24px; background-color: white;
+            border-radius: 50%; transition: 0.4s; display: flex; align-items: center; justify-content: center; font-size: 14px;
+        }
+        .smiley-handle::after { content: "😊"; }
+        input:checked + .smiley-handle { transform: translateX(24px); }
+        input:checked + .smiley-handle::after { content: "☹️"; }
+
+        .btn-start { 
+            background: var(--primary); color: #1e293b; font-weight: 900; font-size: 21px; 
+            padding: 16px; border: none; border-radius: 20px; cursor: pointer; 
+            transition: all 0.4s; width: 100%; margin-top: -5px;
+            box-shadow: 0 10px 20px rgba(234, 179, 8, 0.2);
+        }
+
+        #main-screen { display: none; flex-direction: column; gap: 20px; animation: fadeIn 0.5s ease-out; }
+        
+        .main-timer-card { 
+            padding: 30px 20px; border-radius: 28px; text-align: center; position: relative; overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06); background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .net-days { font-size: 85px; font-weight: 900; line-height: 1; margin: 10px 0; letter-spacing: -2px; }
+        .absolute-timer { 
+            display: flex; justify-content: center; gap: 12px; background: rgba(0,0,0,0.04); 
+            padding: 16px; border-radius: 22px; margin-top: 18px;
+        }
+        .time-box { text-align: center; min-width: 45px; }
+        .time-val { font-size: 26px; font-weight: 800; }
+        .time-lbl { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+
+        .ai-btn {
+            background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 10px; border-radius: 16px; font-size: 14px; font-weight: 800; cursor: pointer;
+            width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin-top: 20px; transition: 0.3s;
+        }
+
+        .ai-tip-result-box {
+            background: #ffffff; border: 2px solid var(--primary); padding: 16px;
+            border-radius: 20px; font-size: 15px; text-align: center; margin-top: 10px;
+            display: none; animation: fadeIn 0.4s; line-height: 1.5; font-weight: 600;
+            box-shadow: 0 5px 15px rgba(234, 179, 8, 0.1);
+        }
+
+        .vacation-length-box {
+            color: var(--text-muted);
+            font-size: 15px; font-weight: 600;
+            display: inline-block; margin-top: 4px; animation: fadeIn 0.4s;
+        }
+        .vacation-length-box b { 
+            font-weight: 800; 
+            color: var(--text-main); 
+            font-size: 16px; 
+        }
+
+        .loader { width: 18px; height: 18px; border: 3px solid rgba(0,0,0,0.1); border-top: 3px solid #000000; border-radius: 50%; animation: spin 0.8s linear infinite; display: none; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .holiday-card { background: #ffffff; border: 1px solid #f1f5f9; border-right: 5px solid #cbd5e1; padding: 18px; border-radius: 18px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s; }
+        .holiday-card.active { border-right-color: var(--primary); background: #fefce8; border-color: #fef08a; }
+
+        .btn-share { 
+            background: var(--whatsapp-green); color: white; text-align: center; text-decoration: none; padding: 16px; 
+            border-radius: 20px; font-weight: 800; font-size: 17px; display: flex; justify-content: center; 
+            align-items: center; gap: 10px; margin-top: 15px;
+            box-shadow: 0 8px 15px rgba(37, 211, 102, 0.2); width: 100%; border: none;
+        }
+        .btn-share:hover { background: var(--whatsapp-hover); transform: translateY(-2px); }
+
+        /* כפתור הוספה למסך הבית */
+        .btn-a2hs {
+            background: #f8fafc; color: var(--text-main); text-align: center; text-decoration: none; padding: 14px; 
+            border-radius: 20px; font-weight: 800; font-size: 16px; display: flex; justify-content: center; 
+            align-items: center; gap: 8px; margin-top: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); width: 100%; border: 2px solid #e2e8f0;
+            cursor: pointer; transition: 0.3s;
+        }
+        .btn-a2hs:hover { background: #f1f5f9; transform: translateY(-2px); }
+
+        .reset-btn { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; padding: 8px; font-size: 13px; margin-top: 10px; }
+
+        .seo-footer {
+            margin-top: 40px; padding: 30px 10px; border-top: 1px solid #f1f5f9; 
+            font-size: 14px; color: var(--text-muted); text-align: right; line-height: 1.7;
+        }
+        .seo-footer h2 { font-size: 18px; margin-bottom: 12px; color: var(--text-main); font-weight: 800; }
+        .seo-footer h3 { font-size: 16px; margin-top: 15px; margin-bottom: 8px; color: var(--text-main); font-weight: 700; }
+        .contact-area { margin-top: 25px; padding-top: 15px; border-top: 1px dashed #e2e8f0; font-size: 13px; font-weight: 600; }
+        .contact-link { color: var(--accent); text-decoration: none; }
+
+        /* עיצוב חלונית ההדרכה לאייפון */
+        .ios-modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5);
+            display: none; justify-content: center; align-items: flex-end; z-index: 1000; padding: 20px;
+            animation: fadeIn 0.3s ease-out; backdrop-filter: blur(2px);
+        }
+        .ios-modal-content {
+            background: white; width: 100%; max-width: 400px; padding: 24px; border-radius: 24px;
+            text-align: center; box-shadow: 0 -10px 40px rgba(0,0,0,0.1); margin-bottom: 20px;
+        }
+        .ios-modal-title { font-size: 19px; font-weight: 900; margin-bottom: 12px; color: var(--text-main); }
+        .ios-modal-text { font-size: 15.5px; color: var(--text-main); font-weight: 600; line-height: 1.8; margin-bottom: 20px; }
+        .ios-icon { display: inline-block; background: #f1f5f9; padding: 4px 8px; border-radius: 8px; font-size: 18px; margin: 0 4px; border: 1px solid #e2e8f0;}
+        .ios-modal-close {
+            background: var(--primary); color: #1e293b; border: none; padding: 14px 30px; font-weight: 900;
+            border-radius: 18px; font-size: 17px; cursor: pointer; width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="sun-background"></div>
+    <main class="app-container">
+        <div id="setup-screen">
+            <div class="setup-header">
+                <span class="icon">☀️</span>
+                <h1><span>נטו</span>מתי באמת החופש הגדול</h1>
+                <p>ספירה לאחור - בלי שבתות, שישי וחגים</p>
+            </div>
+
+            <!-- שלב 1: איפה אתם לומדים? -->
+            <div class="setup-step">
+                <h3>איפה אתם לומדים?</h3>
+                <div class="school-grid">
+                    <label class="option-card">
+                        <input type="radio" name="schoolType" value="elem" onchange="updateSchoolSelection(this)"> 
+                        <span class="option-title">יסודי</span>
+                        <span class="option-emoji">🎨</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="schoolType" value="middle" onchange="updateSchoolSelection(this)"> 
+                        <span class="option-title">חטיבה</span>
+                        <span class="option-emoji">🎒</span>
+                    </label>
+                    <label class="option-card">
+                        <input type="radio" name="schoolType" value="high" onchange="updateSchoolSelection(this)"> 
+                        <span class="option-title">תיכון</span>
+                        <span class="option-emoji">🎓</span>
+                    </label>
+                </div>
+                <div id="school-hint-text" class="school-hint" style="visibility: hidden;"></div>
+            </div>
+
+            <!-- שלב 2: לומדים בשישי? -->
+            <div class="setup-step">
+                <div class="toggle-container" onclick="document.getElementById('friday-toggle').click();">
+                    <div class="toggle-text-area">
+                        <div class="toggle-title">לומדים בשישי?</div>
+                        <div id="friday-hint-text" class="toggle-hint">לא, אצלנו שישי זה חופש 😊</div>
+                    </div>
+                    <label class="smiley-switch" onclick="event.stopPropagation();">
+                        <input type="checkbox" id="friday-toggle" onchange="updateFridayToggle()">
+                        <span class="smiley-handle"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="error-message" style="color: #ef4444; font-weight: 900; text-align: center; display: none; background: #fee2e2; padding: 12px; border-radius: 16px;">רגע! לא סימנתם איפה אתם לומדים 🎒</div>
+            <button class="btn-start" onclick="initApp()">התחל ספירה לאחור! 🚀</button>
+        </div>
+
+        <div id="main-screen">
+            <div id="main-timer-bg" class="main-timer-card">
+                <div id="main-target-title" style="font-weight: 800; font-size: 20px; margin-bottom: 10px;"></div>
+                <div class="net-days-container">
+                    <div style="font-weight: 800; color: var(--text-muted);">נשארו רק:</div>
+                    <div id="main-net-days" class="net-days">-</div>
+                    <div style="font-weight: 800; color: var(--text-muted);">ימי לימוד נטו!</div>
+                    <div id="excluding-label" style="font-size: 14px; font-weight: 600; color: var(--text-muted); margin-top: 8px;"></div>
+                </div>
+                <div class="absolute-timer" dir="ltr">
+                    <div class="time-box"><div id="abs-days" class="time-val">-</div><div class="time-lbl">ימים</div></div>
+                    <div class="time-box"><div id="abs-hours" class="time-val">-</div><div class="time-lbl">שעות</div></div>
+                    <div class="time-box"><div id="abs-mins" class="time-val">-</div><div class="time-lbl">דקות</div></div>
+                    <div class="time-box"><div id="abs-secs" class="time-val">-</div><div class="time-lbl">שניות</div></div>
+                </div>
+
+                <div class="total-days-label" style="margin-top: 8px;">סך הכל</div>
+
+                <div style="text-align: center;">
+                    <div id="vacation-length-box" class="vacation-length-box">
+                        <span id="vacation-days-count"></span>
+                    </div>
+                </div>
+
+                <div class="ai-tools">
+                    <button class="ai-btn" id="main-ai-btn" onclick="handleAiTip()">
+                        <span id="ai-btn-loader" class="loader"></span>
+                        <span id="ai-btn-text">לחץ לטיפ אופטימיות יומי ✨</span>
+                    </button>
+                    <div id="ai-btn-replaced-text" style="display: none; text-align: center; font-weight: 700; color: var(--text-muted); margin-top: 15px; font-size: 14px;">טיפ חדש יופיע מחר ✨</div>
+                    <div id="ai-tip-result" class="ai-tip-result-box"></div>
+                </div>
+            </div>
+            <h2 style="font-size: 18px; margin-top: 5px;">בחר יעד לספירה:</h2>
+            <div id="holidays-container" style="display: flex; flex-direction: column; gap: 8px;"></div>
+            <a href="#" id="share-btn" class="btn-share" onclick="shareWhatsApp(event)">שתפו את הכיתה 🚀</a>
+            <button id="a2hs-btn" class="btn-a2hs" style="display: none;">📱 הוסיפו כאפליקציה</button>
+            <center><button class="reset-btn" onclick="resetApp()">שינוי הגדרות</button></center>
+        </div>
+
+        <footer class="seo-footer">
+            <h2>מתי החופש הגדול 2026? ספירה לאחור לחופש הגדול</h2>
+            <p>שואלים את עצמכם <strong>כמה ימים נשארו לחופש הגדול</strong>? או <strong>כמה זמן נשאר לחופש הגדול</strong>? הגעתם למקום הנכון! האתר "נטו חופש" הוא המחשבון המדויק ביותר שיענה לכם על השאלה <strong>כמה ימים נשארו לחופש הגדול בלי שישי שבת וחגים</strong>.</p>
+            <h3>מתי יוצאים לחופש הגדול ומתי מסיימים ללמוד?</h3>
+            <p>לפי <strong>לוח חופשות משרד החינוך</strong>, <strong>תאריך החופש הגדול</strong> משתנה לפי הגיל: בתי הספר היסודיים מסיימים ב-30 ביוני, בעוד שחטיבות הביניים והתיכונים מסיימים ב-19 ביוני. אם אתם רוצים לדעת <strong>מתי מסתיימת שנת הלימודים</strong> בדיוק עבורכם, פשוט בחרו את השכבה שלכם במחשבון למעלה וקבלו <strong>ספירה לאחור לחופש הגדול</strong> בזמן אמת, שתראה לכם בדיוק <strong>מתי מסיימים ללמוד</strong> השנה!</p>
+            <div class="contact-area">
+                ליצירת קשר, שיתופי פעולה או דיווח על תקלות: 
+                <a href="mailto:levanov.yonatan@gmail.com" class="contact-link">levanov.yonatan@gmail.com</a>
+            </div>
+        </footer>
+
+        <footer style="text-align: center; font-size: 12px; color: #888; padding: 20px; margin-top: 40px; direction: rtl;">
+          <p style="margin-bottom: 5px;"><strong>© 2026 נטו חופש - כל הזכויות שמורות.</strong></p>
+          <p style="margin-bottom: 5px;">האתר משתמש בקובצי עוגיות (Cookies) לשיפור חוויית הגלישה.</p>
+        </footer>
+
+        <div id="ios-modal" class="ios-modal-overlay">
+            <div class="ios-modal-content">
+                <h3 style="font-size: 20px; font-weight: 900; margin-bottom: 15px; color: var(--text-main);">התקנת "נטו" כאפליקציה ☀️</h3>
+                <div style="font-size: 15px; font-weight: 600; color: var(--text-main); line-height: 1.6; text-align: right; background: #f8fafc; padding: 15px; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 15px;">
+                    <p style="margin-bottom: 10px;">1. בתחתית המסך (בדפדפן ספארי), לחצו על <b>כפתור השיתוף</b> (מרובע עם חץ כלפי מעלה <span style="font-size:18px;">⍐</span>).</p>
+                    <p>2. בתפריט שייפתח, גללו קצת למטה ולחצו על השורה <b>"הוסף למסך הבית"</b> (Add to Home Screen ➕).</p>
+                </div>
+                <button class="ios-modal-close" onclick="closeIosModal()">הבנתי!</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const smartTipsDb = {
+            atzmaut: {
+                far: [
+                    "טיפ למנגל: לנפנף על המנגל שורף בדיוק את אותן קלוריות כמו להצביע בשיעור מתמטיקה. 🥩",
+                    "תזכורת: ביום העצמאות כולנו פתאום מפתחים כושר ריצה של אלוף אולימפי, רק כדי לברוח מילד עם ספריי שלג. 🏃‍♂️💨",
+                    "משימת היום: תתחילו להתאמן על התירוץ 'נשאר לי ספריי שלג בעין מיום העצמאות' כדי לאחר לשיעור. 👁️❄️",
+                    "טיפ אסטרטגי: לקנות פטיש פלסטיק עכשיו, לפני שהמחירים עולים ליותר מהדמי כיס שלכם. 🔨💸",
+                    "עובדה מדעית: אי אפשר לעשות שיעורי בית כשברקע יש מוזיקה של פסטיגל בפול ווליום מהרחוב. אל תנסו. 🎶"
+                ],
+                close: [
+                    "הכנה מנטלית: בעוד כמה ימים השיער שלכם הולך להפוך לגוש דביק של קצף חוטים. תהנו! 🕸️💇‍♂️",
+                    "טיפ: אם המורה שואלת למה לא הכנתם שיעורים, תגידו שהייתם עסוקים בלבנות חומה נגד מתקפות ספריי שלג. 🏰❄️",
+                    "דילמה: האם מכה מפטיש פלסטיק לראש נחשבת פציעת ספורט שמשחררת משיעור חינוך גופני? 🔨🤔",
+                    "טיפ כלכלי: אל תקנו ספריי שלג בתוך הפארק ב-50 שקל, תביאו מהסטוק בבית. 💰❄️",
+                    "משימה: לנסות לא לאבד את החברים שלכם בתוך כל העשן של המנגלים. 🥩👀"
+                ],
+                tomorrow: [
+                    "הוראת היום: מחר מצטיידים בנשק חם (ספריי שלג) ויוצאים לקרב! אין שיעורי בית, יש רק הישרדות. ❄️🛡️",
+                    "טיפ למחר: תאכלו כמה שיותר פיתות עם חומוס. זה הדלק שלכם לברוח מילדים עם פטישים. 🥙🏃‍♀️",
+                    "הכנה למחר: תדאגו לנעלי ריצה טובות. תצטרכו אותן כדי לחמוק מהמטחים של הספריי שלג. 👟❄️"
+                ]
+            },
+            lagbaomer: {
+                far: [
+                    "משימת היום: תתחילו לסמן אילו מחברות של איזה מקצוע הולכות להיות חומר בערה בל\"ג בעומר. 🔥📖",
+                    "אסטרטגיה: זה הזמן להציע למורה לאסוף את דפי העבודה הישנים 'למחזור'. (לפח המיחזור של המדורה). ♻️🔥",
+                    "טיפ איסוף קרשים: כל כיסא שבור בבית הספר פתאום נראה כמו אוצר פוטנציאלי. אל תתפתו! 🪑👀",
+                    "עובדה: 'הכלב אכל לי את שיעורי הבית' - אאוט. 'השיעורים נפלו לי בטעות למדורה' - אין! 🔥🐶"
+                ],
+                close: [
+                    "הכנה למקלחת: בעוד כמה ימים כולנו הולכים להריח כמו קרטון שרוף ומרשמלו. תכינו את השמפו! 🚿🔥",
+                    "טיפ ארגון: אל תשכחו להביא תפוחי אדמה. אף אחד לא באמת אוכל אותם, אבל זה קריטי לאווירה. 🥔",
+                    "אזהרה: אל תזרקו למדורה את המחברת של מדעים אם יש שם עדיין חומר למבחן. בדקנו, זה פחות משתלם. 📉🔥",
+                    "היערכות לוגיסטית: ודאו שיש מספיק מרשמלו. תפוחי אדמה זה יפה, אבל מרשמלו זה החיים. 🍢🔥",
+                    "זיהוי סכנות: תתרחקו מהילד שמחזיק את הבקבוק שמן, הוא לוקח את המדורה ברצינות מדי. 🛢️🏃‍♂️"
+                ],
+                tomorrow: [
+                    "חוק פיזיקלי למדורה מחר: לא משנה איפה תשבו, העשן תמיד יעקוב אחריכם. תמיד. 💨👀",
+                    "טיפ למחר: אם תפוח האדמה שחור מבחוץ וקפוא מבפנים - ברכות, עשיתם את זה נכון! 🥔🔥",
+                    "אזהרה למחר: אם אתם הולכים להביא גיטרה למדורה, תוודאו שאתם יודעים לנגן יותר משיר אחד. 🎸🔥"
+                ]
+            },
+            shavuot: {
+                far: [
+                    "משימת היום: תתחילו להתאמן על זריקת בלון מים מטווח רחוק. גם בפיזיקה זה נחשב לניסוי. 🎈📐",
+                    "הכנת הקיבה: החג שבו פשטידה זה לגיטימי לגמרי בדרך. תכינו מקום בבטן. 🥧",
+                    "דילמה: איך לובשים לבן לבית הספר מבלי לחזור הביתה עם כתם של שוקו מהקפיטריה? בלתי אפשרי. 🥛👕",
+                    "טיפ תזונתי: הגיע הזמן לפתוח דיאטה מראש לקראת כמות הפחמימות והגבינות של החג. 🧀📈",
+                    "נקודת אור: החופש של שבועות בדרך! עוד קצת ואפשר לישון עד מאוחר בתירוץ של חג. 🛌"
+                ],
+                close: [
+                    "טיפ: זה הזמן לוודא שיש לכם חולצה לבנה בארון שלא אכפת לכם שהיא תהפוך לשקופה ממלחמת מים. 👕💦",
+                    "אזהרת חלב: הכינו את הבטן לכמויות של גבינה שיגרמו לכם לישון יומיים ברצף. 🧀😴",
+                    "הכנה מנטלית: תכינו את עצמכם לריח של חמוץ-מתוק שישתלט על השכונה. זה רק טנא, לא לדאוג. 🧺🌿",
+                    "משימה יומית: זה הזמן להתחיל לחפש תירוצים ללמה לא תכינו עבודות בחג. 🤔",
+                    "אזהרת בטיחות: מלחמת מים במסדרון של בית הספר נראית כמו רעיון טוב, עד שהמנהלת מחליקה. 🏃‍♂️💦"
+                ],
+                tomorrow: [
+                    "הוראת היום: מחר חופש! מותר להירטב מכף רגל ועד ראש, לאכול עוגת גבינה ולשכוח שמערכת השעות קיימת. 🍰💦",
+                    "האתגר של מחר: לסיים את הארוחה הלבנה בלי להכתים את החולצה. המשימה תיכשל כנראה. 👕🧀",
+                    "חזון מחר: תקומו בצהריים, תאכלו פשטידה, ותחזרו לישון. מעגל החיים של שבועות. 🛌🥧",
+                    "טיפ למחר: תאכלו הרבה גבינות, שיהיה לכם כוח לברוח מאלה עם דליי המים ברחוב! 🧀🏃‍♀️"
+                ]
+            },
+            summer: {
+                elem: {
+                    far: [
+                        "טיפ יומי: זה השלב בשנה שבו התיק מתחיל לשקול פחות, כי הפסקנו להביא ספרים ומביאים רק קלפים ופופ-איט. 🎒⚽",
+                        "הבנת המציאות: כשהמורה אומרת 'אני אחכה שיהיה שקט', פשוט תחשבו בלב 'סבבה, אנחנו נחכה לחופש הגדול'. 🤫⏳",
+                        "תכנון: במקום לפתור תרגילים בחשבון, הגיע הזמן לחשב כמה שעות נשארו עד שמותר לישון עד 11:00 בבוקר. 🧮🛌",
+                        "יצירה: המחברת של מולדת הפכה רשמית למפעל לייצור מטוסי נייר כיתתי. ✈️📄",
+                        "טיפ שירותים: המסע לשירותים וחזרה אמור לקחת מעכשיו מינימום 15 דקות. צריך לבדוק מה קורה במסדרונות! 🚽🚶‍♂️"
+                    ],
+                    mid: [
+                        "זיהוי קיץ: אפשר כבר להריח את הכלור של הבריכה מתוך הכיתה. אל תתייאשו! 🏊‍♂️",
+                        "הצעת ייעול: הגיע הזמן להתחיל 'לאבד' ציוד בקלמר כדי שלא תצטרכו לעשות יותר שיעורי בית. 'המורה, אין לי עיפרון!' ✏️🤷‍♂️",
+                        "מחשבה יומית: צלצול לסוף שיעור הוא לא סתם רעש, הוא מוזיקת מלאכים שמקרבת אותנו לחופש הגדול. 🔔👼",
+                        "אזהרת מסע: אם תחפשו טוב בתיק, תמצאו שם כריך משבועות, מחק אכול ותקווה קטנה לקיץ. 🥪🎒"
+                    ],
+                    close: [
+                        "עדכון שטח: משחקי התופסת בהפסקה הפכו לאימון רשמי של הימלטות מבית הספר ביום האחרון ללימודים. 🏃‍♂️💨",
+                        "הוראת ציוד: מעכשיו מותר להביא לכיתה רק טאקי, דפי צביעה וחלומות על ארטיק רמזור. 🎨🃏",
+                        "טיפ סטיילינג: כפכפים לבית הספר זה לא זלזול, זו הצהרת כוונות על כך שהקיץ כבר כאן. 🩴☀️",
+                        "הצהרה: הקלמר שלכם נראה כרגע כמו זירת פשע של טושים פתוחים ועפרונות שבורים. לא נורא, סוף השנה! 🖍️🚔",
+                        "הישג: הגעתם לשלב שבו להביא יומן לבית ספר זו המלצה בלבד. 📓🤷‍♂️"
+                    ],
+                    tomorrow: [
+                        "הנחיה למחר: מחר היום האחרון!! תכינו את בגדי הים, סיימנו עם שעורי הבית לשנה הקרובה! 🏖️🍉",
+                        "מחר תעודות: לוקחים אותן, אומרים יפה תודה, מכניסים עמוק למגירה ורצים לים! 📜🏃‍♂️",
+                        "הכנות לבוקר: מחר אין צלצול, אין תיק כבד ואין 'להוציא מחברות'. הגיע הזמן לחגוג! 🎉🍉"
+                    ]
+                },
+                middle: {
+                    far: [
+                        "עובדת חיים: לקום ב-7 בבוקר זה פשע. החופש מתקרב, תחזיקו מעמד רק עוד קצת עם העיניים פקוחות. 😴✊",
+                        "טיפ למידה: לצאת לשירותים באמצע שיעור מתמטיקה זה לא צורך פיזי, זה נטו צורך נפשי להשתחרר. 🚽🏃‍♂️",
+                        "תירוץ אומנותי: 'המורה, אני לא מקשקש במחברת, אני מסכם את החומר חזותית בצורת מפלצת'. 🎨🎓",
+                        "מיומנות חטיבה: לומדים להסוות טלפון מתחת לשולחן הרבה יותר טוב מאשר את לוח הכפל. 📱🥷",
+                        "טיפ כלכלי: תפסיקו לקנות אוכל בקיוסק. תחסכו את הכסף לקניית אבטיח וקרטיבים בחופש! 💳🍉"
+                    ],
+                    mid: [
+                        "פילוסופיה: הזמן שלוקח למורה להפעיל את המקרן בשיעור, מרגיש לפעמים ארוך יותר מכל החופש הגדול. 📽️🤦‍♂️",
+                        "תופעת טבע: לצאת עכשיו לשירותים אומר לפגוש את כל השכבה במסדרון עושה בדיוק את אותו הדבר. 🚶‍♂️🚽",
+                        "הישרדות: המזגן בכיתה מכוון או על כבשן או על סיביר. תמיד תביאו סוודר, גם אם בחוץ 30 מעלות. ❄️🔥",
+                        "דילמה: המורה אומרת שזה חומר למבחן. המוח שלכם עסוק בלשחזר את הפרק האחרון שראיתם בנטפליקס. 📺🧠"
+                    ],
+                    close: [
+                        "אסטרטגיה: לבהות בנקודה בקיר ולדמיין שאתם כרגע ביוון הכל כלול. זה מעביר יופי את שעת אפס. 🇬🇷💭",
+                        "הבנת המציאות: בשלב הזה מגיעים לבית ספר רק בשביל המזגן ובשביל לצחוק עם חברים. הלימודים הם רק בונוס. ❄️😂",
+                        "הישג אקדמי: התיק נשאר בבית, מגיעים רק עם טלפון, מטען ושקית ניילון בלויה. הניצחון קרוב! 🛍️🏆",
+                        "סקר נוכחות: מי שעוד יושב בכיתה עכשיו הם רק אלה שהגיעו לגבול חיסורי האחוזים. אתם גיבורים בעל כורחכם! 🚷"
+                    ],
+                    veryClose: [
+                        "סריקת מלאי: נשארתם בקלמר עם עט אחד שמצאתם על הרצפה, והוא בכלל כותב בירוק. זה מספיק. 🖊️✨",
+                        "הצהרה: נלחמתם, שרדתם, שמעתם חפירות. עכשיו מותר לכם לאבד ריכוז לחלוטין. 🔥🏆",
+                        "הכנה אחרונה: מחר תגלו מחדש איך נראה אור שמש בשעה 10 בבוקר, במקום אור הפלורסנט המרצד. ☀️🏄‍♂️",
+                        "זהו, נגמר! לא נשאר לכם שום תירוץ להישאר ערים עד מאוחר חוץ מזה שפשוט מותר לכם. 🌃🎮"
+                    ]
+                },
+                high: {
+                    far: [
+                        "טיפ אסטרטגי: למה ללמוד חודש מראש לבגרות, כשאפשר להיזכר ללמוד לילה לפני עם המון פאניקה וקפה? ☕😱",
+                        "רמת עייפות: לנסות לעשות זום-אין למחברת אמיתית עם האצבע. אולי הגיע הזמן ללכת לישון. 📓🤏",
+                        "עובדה: תלמידי תיכון בתקופה הזאת מורכבים מ-90% אקסל זירו, 5% ייאוש ו-5% רצון להיות בים. 🔋🌊",
+                        "טיפ לשיעור ספורט: בשעה השביעית זה לא שיעור, זו המלצה חמה למצוא את החור הקרוב בגדר ולחתוך. 🏃‍♀️💨",
+                        "תכנון: זמן מעולה לשבת בשיעור ולחשב כמה אחוזים צריך לקבל במגן כדי לעבור את הבגרות בקושי. 🧮🤔"
+                    ],
+                    mid: [
+                        "תירוץ אמין להיום: 'איחרתי כי נתקעתי בפקק מנטלי עצום בין המיטה שלי לדלת החדר'. 🚌",
+                        "קונפליקט מתמטי: המספר 56 מעולם לא נראה זוהר, סקסי ומלא תקווה כמו בתקופת הבגרויות. 🧮🍀",
+                        "אזהרת בולשיט: מורים אומרים 'החומר הזה ילווה אתכם בחיים'. בחיים האמיתיים אנחנו רק צריכים גוגל ווייז. 🗺️📱",
+                        "כישורי למידה: לחפש ביוטיוב 'איך ללמוד לבגרות באזרחות ב-3 דקות' לא נחשב למידה. ניסינו. 💻"
+                    ],
+                    close: [
+                        "מוטיבציה פירומנית: לחשוב על המדורה שבה תשרפו את כל הסיכומים בסוף הבגרות. זה מה שמשאיר אותנו בחיים. 🔥📚",
+                        "האמת הכואבת: אין בגידה נוראית יותר ממורה שמבטיחה 'לשחרר מוקדם' ובסוף שומרת אתכם עד לצלצול. 😤🔔",
+                        "טיפ לקראת הסוף: אל תבכו על שיעורים שלא עשיתם, תשמחו על אלו שלא תצטרכו לעשות חודשיים שלמים! 📝🚫",
+                        "הסחת דעת: להעביר מרקר צהוב סתם על משפטים אקראיים בספר כדי שהמורה תחשוב שאתם לומדים בשיא הריכוז. 🖍️😎"
+                    ],
+                    veryClose: [
+                        "מבט לאחור: הדמעות, הייאוש, הפחיות אקסל הריקות... הכל היה שווה את הרגע שבו נועלים את הדלת ובורחים לים. 🎥👏",
+                        "עדכון ציוד מקיף: התיק נשאר נטוש בבית. מגיעים לבגרות האחרונה עם עט כחול, תעודת זהות ואנרגיה של פנסיונר. 🛍️",
+                        "הכרזת עצמאות: מחקו את המשוואות, מחקו את הסיכומים בטלפון - החופש הגדול מתחיל עכ-שיו! 🌊🎉",
+                        "הכנה סופית: ודאו שיש לכם מספיק קרם הגנה ותוכניות לא לעשות כלום בחודשיים הקרובים. 🧴🏖️"
+                    ]
+                }
+            }
+        };
+
+        const loadingPhrases = ["טוען פאנץ' מוחץ... 🤖", "מחשב אנרגיות לקיץ... ☀️", "מחפש כוח רצון... 🔍"];
+        let userConfig = { schoolType: '', studyFriday: false, activeTargetId: '' };
+        let activeEventsList = [];
+        let timerInterval = null;
+        let dailyTipsState = { date: '', targets: {} };
+        let confettiFired = false;
+
+        const holidays2026 = ['2026-04-22', '2026-05-05', '2026-05-21', '2026-05-22'];
+        const allTargets = [
+            { id: 'atzmaut', name: 'יום העצמאות', date: new Date('2026-04-22T08:15:00'), icon: '🇮🇱', bg: '#f0f9ff', lengthText: 'יום אחד' },
+            { id: 'lagbaomer', name: 'ל"ג בעומר', date: new Date('2026-05-05T08:15:00'), icon: '🔥', bg: '#fff7ed', lengthText: 'יום אחד' },
+            { id: 'shavuot', name: 'שבועות', date: new Date('2026-05-21T08:15:00'), icon: '🧀', bg: '#f0fdf4', lengthText: '3 ימים' },
+            { id: 'summerHigh', name: 'החופש הגדול', date: new Date('2026-06-19T08:15:00'), isSummer: true, type: 'high', icon: '🏖️', bg: '#fefce8' },
+            { id: 'summerElem', name: 'החופש הגדול', date: new Date('2026-07-01T08:15:00'), isSummer: true, type: 'elem', icon: '🍉', bg: '#fefce8' }
+        ];
+
+        // מנגנון הוספה למסך הבית (PWA)
+        function initPWA() {
+            const manifestData = {
+                "name": "נטו | מתי החופש הגדול",
+                "short_name": "נטו",
+                "start_url": window.location.href,
+                "display": "standalone",
+                "background_color": "#ffffff",
+                "theme_color": "#ffffff",
+                "icons": [{
+                    "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='white'/%3E%3Ctext x='50' y='54' dominant-baseline='central' text-anchor='middle' font-size='75'%3E☀️%3C/text%3E%3C/svg%3E",
+                    "sizes": "192x192 512x512",
+                    "type": "image/svg+xml",
+                    "purpose": "any maskable"
+                }]
+            };
+            const manifestBlob = new Blob([JSON.stringify(manifestData)], {type: 'application/json'});
+            document.getElementById('manifest-link').setAttribute('href', URL.createObjectURL(manifestBlob));
+
+            if ('serviceWorker' in navigator) {
+                const swCode = `self.addEventListener('install', e => self.skipWaiting()); self.addEventListener('activate', e => self.clients.claim()); self.addEventListener('fetch', e => {});`;
+                const swBlob = new Blob([swCode], {type: 'application/javascript'});
+                navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(() => {});
+            }
+
+            let deferredPrompt;
+            const a2hsBtn = document.getElementById('a2hs-btn');
+            const isIos = () => /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+            const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+
+            if (isIos() && !isInStandaloneMode()) {
+                a2hsBtn.style.display = 'flex';
+                a2hsBtn.onclick = () => document.getElementById('ios-modal').style.display = 'flex';
+            } else {
+                window.addEventListener('beforeinstallprompt', (e) => {
+                    e.preventDefault();
+                    deferredPrompt = e;
+                    a2hsBtn.style.display = 'flex';
+                    a2hsBtn.onclick = async () => {
+                        a2hsBtn.style.display = 'none';
+                        deferredPrompt.prompt();
+                        await deferredPrompt.userChoice;
+                        deferredPrompt = null;
+                    };
+                });
+            }
+            window.addEventListener('appinstalled', () => {
+                a2hsBtn.style.display = 'none';
+                deferredPrompt = null;
+            });
+        }
+
+        function closeIosModal() {
+            document.getElementById('ios-modal').style.display = 'none';
+        }
+
+        function loadDailyState() {
+            const now = new Date();
+            const todayStr = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
+            const saved = localStorage.getItem('holiday_calc_daily_tips_v2');
+            if (saved) {
+                try {
+                    const parsed = JSON.parse(saved);
+                    if (parsed.date === todayStr) { dailyTipsState = parsed; return; }
+                } catch (e) {}
+            }
+            dailyTipsState = { date: todayStr, targets: {} };
+        }
+
+        function saveDailyState() { localStorage.setItem('holiday_calc_daily_tips_v2', JSON.stringify(dailyTipsState)); }
+
+        function getSmartTip(targetId, schoolType, daysLeft) {
+            let pool = [];
+            let poolKey = '';
+            const cat = targetId.startsWith('summer') ? (schoolType || 'high') : null;
+            if (targetId.startsWith('summer')) {
+                let timeFrame = daysLeft > 40 ? 'far' : (daysLeft > 20 ? 'mid' : (daysLeft > 5 ? 'close' : 'veryClose'));
+                pool = smartTipsDb.summer[cat][timeFrame] || smartTipsDb.summer[cat]['far'];
+                poolKey = `summer_${cat}_${timeFrame}`;
+            } else {
+                const holidayKey = smartTipsDb[targetId] ? targetId : 'shavuot';
+                let timeFrame = daysLeft > 10 ? 'far' : (daysLeft > 1 ? 'close' : 'tomorrow');
+                pool = smartTipsDb[holidayKey][timeFrame];
+                poolKey = `${holidayKey}_${timeFrame}`;
+            }
+
+            // מנגנון חכם למניעת חזרות (שומר את הטיפים שכבר הוצגו)
+            let tipHistory = JSON.parse(localStorage.getItem('holiday_calc_tip_history') || '{}');
+            if (!tipHistory[poolKey]) tipHistory[poolKey] = [];
+
+            // מסנן את כל הטיפים שעוד לא הוצגו בסבב הנוכחי
+            let availableIndices = pool.map((_, i) => i).filter(i => !tipHistory[poolKey].includes(i));
+
+            // אם כל הטיפים בקטגוריה כבר הוצגו, מאפסים את ההיסטוריה כדי להתחיל סבב חדש
+            if (availableIndices.length === 0) {
+                tipHistory[poolKey] = [];
+                availableIndices = pool.map((_, i) => i);
+            }
+
+            // בוחרים טיפ אקראי מתוך אלו שעוד לא הוצגו
+            const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+            
+            // מוסיפים את הטיפ הנבחר להיסטוריה ושומרים
+            tipHistory[poolKey].push(randomIndex);
+            localStorage.setItem('holiday_calc_tip_history', JSON.stringify(tipHistory));
+
+            return pool[randomIndex];
+        }
+
+        function handleAiTip() {
+            loadDailyState();
+            const targetId = userConfig.activeTargetId;
+            const currentClicks = dailyTipsState.targets[targetId] || 0;
+            if (currentClicks >= 2) return;
+
+            const btn = document.getElementById('main-ai-btn');
+            const btnText = document.getElementById('ai-btn-text');
+            const loader = document.getElementById('ai-btn-loader');
+            const tipBox = document.getElementById('ai-tip-result');
+            
+            tipBox.style.display = 'none';
+            loader.style.display = 'inline-block';
+            btnText.textContent = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
+            const target = activeEventsList.find(e => e.id === targetId);
+            const netDays = calculateNetDays(target.date);
+            
+            setTimeout(() => {
+                const selectedTip = getSmartTip(target.id, userConfig.schoolType, netDays);
+                dailyTipsState.targets[targetId] = currentClicks + 1;
+                saveDailyState();
+                loader.style.display = 'none'; 
+
+                if (dailyTipsState.targets[targetId] >= 2) {
+                    btn.style.display = 'none';
+                    document.getElementById('ai-btn-replaced-text').style.display = 'block';
+                } else {
+                    btnText.textContent = "טיפ נוסף ✨";
+                }
+
+                tipBox.innerHTML = `<b>${currentClicks === 0 ? "הטיפ היומי:" : "טיפ נוסף:"}</b> ✨<br>${selectedTip}`;
+                tipBox.style.display = 'block';
+            }, 800);
+        }
+
+        window.onload = () => {
+            initPWA();
+            const saved = localStorage.getItem('holiday_calc_ultimate_local_ai_v6');
+            if (saved) { 
+                try { userConfig = JSON.parse(saved); showMainScreen(); } catch(e) {}
+            }
+        };
+
+        function initApp() {
+            const choice = document.querySelector('input[name="schoolType"]:checked');
+            if (!choice) { document.getElementById('error-message').style.display = 'block'; return; }
+            window.scrollTo(0, 0);
+            userConfig.schoolType = choice.value;
+            userConfig.studyFriday = document.getElementById('friday-toggle').checked;
+            userConfig.activeTargetId = userConfig.schoolType === 'elem' ? 'summerElem' : 'summerHigh';
+            localStorage.setItem('holiday_calc_ultimate_local_ai_v6', JSON.stringify(userConfig));
+            showMainScreen();
+        }
+
+        function resetApp() {
+            window.scrollTo(0, 0);
+            localStorage.removeItem('holiday_calc_ultimate_local_ai_v6');
+            if (timerInterval) clearInterval(timerInterval);
+            userConfig = { schoolType: '', studyFriday: false, activeTargetId: '' };
+            confettiFired = false;
+            document.getElementById('main-screen').style.display = 'none';
+            document.getElementById('setup-screen').style.display = 'flex';
+            document.getElementById('ai-tip-result').style.display = 'none';
+            document.getElementById('main-ai-btn').style.display = 'flex';
+            document.getElementById('ai-btn-text').textContent = "לחץ לטיפ אופטימיות יומי ✨";
+            document.getElementById('ai-btn-replaced-text').style.display = 'none';
+        }
+
+        function updateSchoolSelection(radio) {
+            document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+            radio.parentElement.classList.add('selected');
+            const hint = document.getElementById('school-hint-text');
+            hint.style.visibility = 'visible';
+            hint.textContent = radio.value === 'elem' ? 'לומדים עד ה-30 ביוני 🍉' : 'יוצאים לחופש ב-19 ביוני 🏖️';
+        }
+
+        function updateFridayToggle() {
+            const toggle = document.getElementById('friday-toggle');
+            const hint = document.getElementById('friday-hint-text');
+            hint.textContent = toggle.checked ? 'כן, יש לנו לימודים בשישי ☹️' : 'לא, אצלנו שישי זה חופש 😊';
+            hint.style.color = toggle.checked ? '#ef4444' : 'var(--text-muted)';
+        }
+
+        function calculateNetDays(targetDate) {
+            const now = new Date();
+            let count = 0, current = new Date(now);
+            if (now.getHours() > 8 || (now.getHours() === 8 && now.getMinutes() >= 15)) current.setDate(current.getDate() + 1);
+            current.setHours(0,0,0,0);
+            while (current < targetDate) {
+                const dStr = current.getFullYear() + '-' + String(current.getMonth() + 1).padStart(2, '0') + '-' + String(current.getDate()).padStart(2, '0');
+                if (current.getDay() !== 6 && (current.getDay() !== 5 || userConfig.studyFriday) && !holidays2026.includes(dStr)) count++;
+                current.setDate(current.getDate() + 1);
+            }
+            return count;
+        }
+
+        function showMainScreen() {
+            document.getElementById('setup-screen').style.display = 'none';
+            document.getElementById('main-screen').style.display = 'flex';
+            document.getElementById('excluding-label').textContent = userConfig.studyFriday ? "(בניכוי חגים ושבתות)" : "(בניכוי חגים, שישי ושבת)";
+            const now = Date.now();
+            activeEventsList = allTargets.filter(e => e.date.getTime() > now && (!e.isSummer || e.type === (userConfig.schoolType === 'elem' ? 'elem' : 'high')));
+            activeEventsList.sort((a,b) => a.date - b.date);
+            renderHolidays();
+            selectTarget(userConfig.activeTargetId || activeEventsList[0].id);
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(updateDashboard, 1000);
+        }
+
+        function renderHolidays() {
+            const container = document.getElementById('holidays-container');
+            container.innerHTML = '';
+            activeEventsList.forEach(ev => {
+                const card = document.createElement('div');
+                card.className = `holiday-card ${ev.id === userConfig.activeTargetId ? 'active' : ''}`;
+                card.onclick = () => selectTarget(ev.id);
+                card.innerHTML = `<div><b>${ev.name} ${ev.icon}</b><br><small>ב-${ev.date.toLocaleDateString('he-IL')}</small></div>`;
+                container.appendChild(card);
+            });
+        }
+
+        function selectTarget(id) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            userConfig.activeTargetId = id;
+            confettiFired = false;
+            const target = activeEventsList.find(e => e.id === id);
+            if (!target) return;
+            document.getElementById('main-timer-bg').style.background = target.bg;
+            document.getElementById('main-target-title').textContent = `עד ${target.name} ${target.icon}`;
+            
+            const vacationBox = document.getElementById('vacation-length-box');
+            if (vacationBox) {
+                let lengthText = '';
+                if (target.isSummer) {
+                    const endOfSchool = new Date(target.date);
+                    endOfSchool.setHours(0,0,0,0);
+                    const startOfSchool = new Date(target.date.getFullYear(), 8, 1);
+                    const diffDays = Math.round((startOfSchool - endOfSchool) / 86400000);
+                    lengthText = `${diffDays} ימים`;
+                } else {
+                    lengthText = target.lengthText;
+                }
+                document.getElementById('vacation-days-count').innerHTML = `החופש שלכם יימשך <b>${lengthText}</b>!`;
+                vacationBox.style.display = 'inline-block';
+            }
+
+            loadDailyState();
+            const clicks = dailyTipsState.targets[id] || 0;
+            document.getElementById('ai-tip-result').style.display = 'none';
+            if (clicks >= 2) {
+                document.getElementById('main-ai-btn').style.display = 'none';
+                document.getElementById('ai-btn-replaced-text').style.display = 'block';
+            } else {
+                document.getElementById('main-ai-btn').style.display = 'flex';
+                document.getElementById('ai-btn-text').textContent = clicks === 1 ? "טיפ נוסף ✨" : "לחץ לטיפ אופטימיות יומי ✨";
+                document.getElementById('ai-btn-replaced-text').style.display = 'none';
+            }
+            renderHolidays();
+            updateDashboard();
+        }
+
+        function updateDashboard() {
+            const event = activeEventsList.find(e => e.id === userConfig.activeTargetId);
+            if (!event) return;
+            const diff = event.date.getTime() - Date.now();
+            if (diff <= 0) {
+                document.getElementById('main-net-days').textContent = "הגיע!";
+                if (!confettiFired) { confettiFired = true; confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } }); }
+            } else {
+                document.getElementById('abs-days').textContent = Math.floor(diff/86400000);
+                document.getElementById('abs-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+                document.getElementById('abs-mins').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+                document.getElementById('abs-secs').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+                document.getElementById('main-net-days').textContent = calculateNetDays(event.date);
+            }
+        }
+
+        function shareWhatsApp(event) {
+            event.preventDefault();
+            const text = `מצאתי אתר שמראה כמה ימי לימוד נטו נשאר עד החופש! 🏖️😱\nכנסו לבדוק >> http://neto-hofesh.co.il/`;
+            window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
