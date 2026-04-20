@@ -206,10 +206,29 @@
         .time-lbl { font-size: 12px; font-weight: 600; color: var(--text-muted); }
 
         .ai-btn {
-            background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.08);
-            padding: 10px; border-radius: 16px; font-size: 14px; font-weight: 800; cursor: pointer;
-            width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
-            margin-top: 20px; transition: 0.3s;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: var(--text-muted);
+            padding: 14px; 
+            border-radius: 18px; 
+            font-size: 15px; 
+            font-weight: 900; 
+            cursor: pointer;
+            width: 100%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 8px;
+            margin-top: 20px; 
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+        }
+        .ai-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            color: var(--text-main);
         }
 
         .ai-tip-result-box {
@@ -217,6 +236,12 @@
             border-radius: 20px; font-size: 15px; text-align: center; margin-top: 10px;
             display: none; animation: fadeIn 0.4s; line-height: 1.5; font-weight: 600;
             box-shadow: 0 5px 15px rgba(234, 179, 8, 0.1);
+        }
+
+        @keyframes tipUpdateAnim {
+            0% { opacity: 0.4; transform: scale(0.95); background-color: #fefce8; }
+            50% { opacity: 1; transform: scale(1.02); background-color: #ffffff; }
+            100% { opacity: 1; transform: scale(1); background-color: #ffffff; }
         }
 
         .vacation-length-box {
@@ -234,16 +259,25 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .holiday-card { background: #ffffff; border: 1px solid #f1f5f9; border-right: 5px solid #cbd5e1; padding: 18px; border-radius: 18px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: 0.2s; }
+        .holiday-card { background: #ffffff; border: 1px solid #f1f5f9; border-right: 5px solid #cbd5e1; padding: 16px 20px; border-radius: 18px; display: flex; justify-content: flex-start; align-items: center; text-align: right; cursor: pointer; transition: 0.2s; }
         .holiday-card.active { border-right-color: var(--primary); background: #fefce8; border-color: #fef08a; }
+
+        @keyframes subtle-jump {
+            0%, 100% { transform: translateY(0); }
+            10% { transform: translateY(-6px); }
+            20% { transform: translateY(0); }
+            30% { transform: translateY(-3px); }
+            40%, 100% { transform: translateY(0); }
+        }
 
         .btn-share { 
             background: var(--whatsapp-green); color: white; text-align: center; text-decoration: none; padding: 16px; 
             border-radius: 20px; font-weight: 800; font-size: 17px; display: flex; justify-content: center; 
             align-items: center; gap: 10px; margin-top: 15px;
             box-shadow: 0 8px 15px rgba(37, 211, 102, 0.2); width: 100%; border: none;
+            animation: subtle-jump 4s infinite;
         }
-        .btn-share:hover { background: var(--whatsapp-hover); transform: translateY(-2px); }
+        .btn-share:hover { background: var(--whatsapp-hover); transform: translateY(-2px); animation-play-state: paused; }
 
         /* כפתור הוספה למסך הבית */
         .btn-a2hs {
@@ -363,15 +397,17 @@
                 <div class="ai-tools">
                     <button class="ai-btn" id="main-ai-btn" onclick="handleAiTip()">
                         <span id="ai-btn-loader" class="loader"></span>
-                        <span id="ai-btn-text">לחץ לטיפ אופטימיות יומי ✨</span>
+                        <span id="ai-btn-text">לחצו לטיפ אופטימיות יומי ✨</span>
                     </button>
                     <div id="ai-btn-replaced-text" style="display: none; text-align: center; font-weight: 700; color: var(--text-muted); margin-top: 15px; font-size: 14px;">טיפ חדש יופיע מחר ✨</div>
                     <div id="ai-tip-result" class="ai-tip-result-box"></div>
                 </div>
             </div>
-            <h2 style="font-size: 18px; margin-top: 5px;">בחר יעד לספירה:</h2>
+            
+            <a href="#" id="share-btn" class="btn-share" onclick="shareWhatsApp(event)" style="margin-top: -5px; margin-bottom: 5px;">שתפו עם הכיתה 🚀</a>
+            
+            <h2 style="font-size: 18px; margin-top: 15px; margin-bottom: 8px; text-align: center;">בחרו יעד לספירה:</h2>
             <div id="holidays-container" style="display: flex; flex-direction: column; gap: 8px;"></div>
-            <a href="#" id="share-btn" class="btn-share" onclick="shareWhatsApp(event)">שתפו את הכיתה 🚀</a>
             <button id="a2hs-btn" class="btn-a2hs" style="display: none;">📱 הוסיפו כאפליקציה</button>
             <center><button class="reset-btn" onclick="resetApp()">שינוי הגדרות</button></center>
         </div>
@@ -561,6 +597,17 @@
         let dailyTipsState = { date: '', targets: {} };
         let confettiFired = false;
 
+        // משתנים לאנימציית המספרים
+        let isAnimatingNetDays = false;
+        let netDaysAnimationId = null;
+
+        // פונקציית עזר לשליחת אירועים לגוגל אנליטיקס
+        function trackEvent(eventName, params = {}) {
+            if (typeof gtag === 'function') {
+                gtag('event', eventName, params);
+            }
+        }
+
         const holidays2026 = ['2026-04-22', '2026-05-05', '2026-05-21', '2026-05-22'];
         const allTargets = [
             { id: 'atzmaut', name: 'יום העצמאות', date: new Date('2026-04-22T08:15:00'), icon: '🇮🇱', bg: '#f0f9ff', lengthText: 'יום אחד' },
@@ -602,13 +649,17 @@
 
             if (isIos() && !isInStandaloneMode()) {
                 a2hsBtn.style.display = 'flex';
-                a2hsBtn.onclick = () => document.getElementById('ios-modal').style.display = 'flex';
+                a2hsBtn.onclick = () => {
+                    trackEvent('open_ios_install_modal');
+                    document.getElementById('ios-modal').style.display = 'flex';
+                };
             } else {
                 window.addEventListener('beforeinstallprompt', (e) => {
                     e.preventDefault();
                     deferredPrompt = e;
                     a2hsBtn.style.display = 'flex';
                     a2hsBtn.onclick = async () => {
+                        trackEvent('click_install_pwa');
                         a2hsBtn.style.display = 'none';
                         deferredPrompt.prompt();
                         await deferredPrompt.userChoice;
@@ -623,6 +674,7 @@
         }
 
         function closeIosModal() {
+            trackEvent('close_ios_install_modal');
             document.getElementById('ios-modal').style.display = 'none';
         }
 
@@ -640,6 +692,45 @@
         }
 
         function saveDailyState() { localStorage.setItem('holiday_calc_daily_tips_v2', JSON.stringify(dailyTipsState)); }
+
+        function renderTipBox(targetId) {
+            let currentState = dailyTipsState.targets[targetId];
+            // תמיכה בגרסאות קודמות ששמרו רק מספר
+            if (typeof currentState === 'number') currentState = { clicks: currentState, texts: [] };
+            if (!currentState) currentState = { clicks: 0, texts: [] };
+
+            const tipBox = document.getElementById('ai-tip-result');
+            const btn = document.getElementById('main-ai-btn');
+            const btnText = document.getElementById('ai-btn-text');
+            const replacedText = document.getElementById('ai-btn-replaced-text');
+
+            // אם כבר יש טיפים שנוצרו היום, מציגים את האחרון שבהם!
+            if (currentState.clicks > 0 && currentState.texts && currentState.texts.length > 0) {
+                const latestTip = currentState.texts[currentState.texts.length - 1];
+                const title = currentState.clicks === 1 ? "הטיפ היומי:" : "טיפ נוסף:";
+                
+                tipBox.innerHTML = `<b>${title}</b> ✨<br>${latestTip}`;
+                tipBox.style.display = 'block';
+
+                // מנקה את העמעום מהטעינה ומפעיל אנימציית "קפיצה" כדי שיראו את ההחלפה
+                tipBox.style.transition = 'none';
+                tipBox.style.animation = 'none';
+                void tipBox.offsetWidth; // מאפס את האנימציה
+                tipBox.style.animation = 'tipUpdateAnim 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+            } else {
+                tipBox.style.display = 'none';
+            }
+
+            // מעדכן את מצב הכפתור
+            if (currentState.clicks >= 2) {
+                btn.style.display = 'none';
+                replacedText.style.display = 'block';
+            } else {
+                btn.style.display = 'flex';
+                btnText.textContent = currentState.clicks === 1 ? "טיפ נוסף ✨" : "לחצו לטיפ אופטימיות יומי ✨";
+                replacedText.style.display = 'none';
+            }
+        }
 
         function getSmartTip(targetId, schoolType, daysLeft) {
             let pool = [];
@@ -682,35 +773,54 @@
         function handleAiTip() {
             loadDailyState();
             const targetId = userConfig.activeTargetId;
-            const currentClicks = dailyTipsState.targets[targetId] || 0;
-            if (currentClicks >= 2) return;
+            
+            let currentState = dailyTipsState.targets[targetId];
+            if (typeof currentState === 'number') currentState = { clicks: currentState, texts: [] };
+            if (!currentState) currentState = { clicks: 0, texts: [] };
+            
+            if (currentState.clicks >= 2) return;
 
             const btn = document.getElementById('main-ai-btn');
             const btnText = document.getElementById('ai-btn-text');
             const loader = document.getElementById('ai-btn-loader');
-            const tipBox = document.getElementById('ai-tip-result');
             
-            tipBox.style.display = 'none';
+            // אפקט טעינה מבלי להעלים את הטיפים הקודמים
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
             loader.style.display = 'inline-block';
             btnText.textContent = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
+            
+            // מעמעם את הטיפ הישן בזמן שטוען את החדש
+            const tipBox = document.getElementById('ai-tip-result');
+            if (tipBox.style.display === 'block') {
+                tipBox.style.opacity = '0.4';
+                tipBox.style.transform = 'scale(0.98)';
+                tipBox.style.transition = 'all 0.3s ease';
+            }
+            
             const target = activeEventsList.find(e => e.id === targetId);
             const netDays = calculateNetDays(target.date);
             
+            // שליחת אירוע ל-Google Analytics
+            trackEvent('click_ai_tip', {
+                'target_holiday': target.name
+            });
+            
             setTimeout(() => {
                 const selectedTip = getSmartTip(target.id, userConfig.schoolType, netDays);
-                dailyTipsState.targets[targetId] = currentClicks + 1;
+                
+                // שומר את הטיפ כדי שיישאר גם אם מרעננים
+                currentState.clicks++;
+                if (!currentState.texts) currentState.texts = [];
+                currentState.texts.push(selectedTip);
+                dailyTipsState.targets[targetId] = currentState;
                 saveDailyState();
+                
+                btn.style.opacity = '1';
+                btn.style.pointerEvents = 'auto';
                 loader.style.display = 'none'; 
 
-                if (dailyTipsState.targets[targetId] >= 2) {
-                    btn.style.display = 'none';
-                    document.getElementById('ai-btn-replaced-text').style.display = 'block';
-                } else {
-                    btnText.textContent = "טיפ נוסף ✨";
-                }
-
-                tipBox.innerHTML = `<b>${currentClicks === 0 ? "הטיפ היומי:" : "טיפ נוסף:"}</b> ✨<br>${selectedTip}`;
-                tipBox.style.display = 'block';
+                renderTipBox(targetId);
             }, 800);
         }
 
@@ -730,11 +840,18 @@
             userConfig.studyFriday = document.getElementById('friday-toggle').checked;
             userConfig.activeTargetId = userConfig.schoolType === 'elem' ? 'summerElem' : 'summerHigh';
             localStorage.setItem('holiday_calc_ultimate_local_ai_v6', JSON.stringify(userConfig));
+            
+            trackEvent('start_countdown', {
+                'school_type': userConfig.schoolType,
+                'study_friday': userConfig.studyFriday
+            });
+            
             showMainScreen();
         }
 
         function resetApp() {
             window.scrollTo(0, 0);
+            trackEvent('click_change_settings');
             localStorage.removeItem('holiday_calc_ultimate_local_ai_v6');
             if (timerInterval) clearInterval(timerInterval);
             userConfig = { schoolType: '', studyFriday: false, activeTargetId: '' };
@@ -743,11 +860,12 @@
             document.getElementById('setup-screen').style.display = 'flex';
             document.getElementById('ai-tip-result').style.display = 'none';
             document.getElementById('main-ai-btn').style.display = 'flex';
-            document.getElementById('ai-btn-text').textContent = "לחץ לטיפ אופטימיות יומי ✨";
+            document.getElementById('ai-btn-text').textContent = "לחצו לטיפ אופטימיות יומי ✨";
             document.getElementById('ai-btn-replaced-text').style.display = 'none';
         }
 
         function updateSchoolSelection(radio) {
+            trackEvent('select_school_type', { 'type': radio.value });
             document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
             radio.parentElement.classList.add('selected');
             const hint = document.getElementById('school-hint-text');
@@ -762,6 +880,7 @@
 
         function updateFridayToggle() {
             const toggle = document.getElementById('friday-toggle');
+            trackEvent('toggle_friday', { 'study_friday': toggle.checked });
             const hint = document.getElementById('friday-hint-text');
             hint.textContent = toggle.checked ? 'כן, יש לנו לימודים בשישי ☹️' : 'לא, אצלנו שישי זה חופש 😊';
             hint.style.color = toggle.checked ? '#ef4444' : 'var(--text-muted)';
@@ -783,6 +902,46 @@
                 current.setDate(current.getDate() + 1);
             }
             return count;
+        }
+
+        // פונקציית אנימציה לספירת המספרים למטה
+        function animateNetDays(finalValue) {
+            if (netDaysAnimationId) {
+                cancelAnimationFrame(netDaysAnimationId);
+                netDaysAnimationId = null;
+            }
+
+            if (typeof finalValue !== 'number' || finalValue <= 0) {
+                document.getElementById('main-net-days').textContent = finalValue <= 0 ? "הגיע!" : finalValue;
+                isAnimatingNetDays = false;
+                return;
+            }
+            
+            isAnimatingNetDays = true;
+            const obj = document.getElementById('main-net-days');
+            const startValue = finalValue + 75; // מתחיל 75 ימים מעל
+            const duration = 1500; // אורך האנימציה - שנייה וחצי
+            let startTimestamp = null;
+
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                
+                // אפקט האטה טבעי (easeOutCubic)
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                const currentVal = Math.floor(startValue - (startValue - finalValue) * easeProgress);
+                
+                obj.textContent = currentVal;
+                
+                if (progress < 1) {
+                    netDaysAnimationId = window.requestAnimationFrame(step);
+                } else {
+                    obj.textContent = finalValue;
+                    isAnimatingNetDays = false;
+                    netDaysAnimationId = null;
+                }
+            };
+            netDaysAnimationId = window.requestAnimationFrame(step);
         }
 
         function showMainScreen() {
@@ -821,6 +980,9 @@
         }
 
         function selectTarget(id) {
+            if (userConfig.activeTargetId !== id && userConfig.activeTargetId !== '') {
+                trackEvent('select_target_holiday', { 'holiday_id': id });
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
             userConfig.activeTargetId = id;
             confettiFired = false;
@@ -846,17 +1008,13 @@
             }
 
             loadDailyState();
-            const clicks = dailyTipsState.targets[id] || 0;
-            document.getElementById('ai-tip-result').style.display = 'none';
-            if (clicks >= 2) {
-                document.getElementById('main-ai-btn').style.display = 'none';
-                document.getElementById('ai-btn-replaced-text').style.display = 'block';
-            } else {
-                document.getElementById('main-ai-btn').style.display = 'flex';
-                document.getElementById('ai-btn-text').textContent = clicks === 1 ? "טיפ נוסף ✨" : "לחץ לטיפ אופטימיות יומי ✨";
-                document.getElementById('ai-btn-replaced-text').style.display = 'none';
-            }
+            renderTipBox(id);
             renderHolidays();
+            
+            // מפעיל את אנימציית הספירה למטה
+            const netDays = calculateNetDays(target.date);
+            animateNetDays(netDays);
+            
             updateDashboard();
         }
 
@@ -872,12 +1030,17 @@
                 document.getElementById('abs-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
                 document.getElementById('abs-mins').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
                 document.getElementById('abs-secs').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-                document.getElementById('main-net-days').textContent = calculateNetDays(event.date);
+                
+                // מעדכן את המספר הרגיל רק אם אין כרגע אנימציה שרצה עליו
+                if (!isAnimatingNetDays) {
+                    document.getElementById('main-net-days').textContent = calculateNetDays(event.date);
+                }
             }
         }
 
         function shareWhatsApp(event) {
             event.preventDefault();
+            trackEvent('share_whatsapp_click');
             const text = `מצאתי אתר שמראה כמה ימי לימוד נטו נשאר עד החופש! 🏖️😱\nכנסו לבדוק >> http://neto-hofesh.co.il/`;
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
         }
