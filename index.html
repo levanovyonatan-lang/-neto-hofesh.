@@ -34,8 +34,8 @@
     <!-- Confetti Script -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     
-    <meta name="description" content="בודקים מתי החופש הגדול? מחשבון ספירה לאחור המראה בדיוק כמה ימים נשארו לחופש הגדול 2026 בלי שישי שבת וחגים! מעודכן לפי לוח חופשות משרד החינוך.">
-    <meta name="keywords" content="מתי החופש הגדול, כמה ימים נשארו לחופש הגדול, החופש הגדול 2026, מתי יוצאים לחופש הגדול, מתי מסתיימת שנת הלימודים, ספירה לאחור לחופש הגדול, תאריך החופש הגדול, כמה זמן נשאר לחופש הגדול, לוח חופשות משרד החינוך, מתי מסיימים ללמוד, כמה ימים נשארו לחופש הגדול בלי שישי שבת וחגים">
+    <meta name="description" content="בודקים עוד כמה ימים יש חופש גדול? אתר נטו חופש מציג מחשבון ספירה לאחור המראה כמה ימי לימודים עד החופש הגדול 2026, לא כולל שבתות וחגים! כנסו לבדוק מתי מסתיימים הלימודים.">
+    <meta name="keywords" content="נטו חופש, מתי החופש הגדול, כמה ימים עד לחופש הגדול, עוד כמה ימים יתחיל החופש הגדול לחטיבות הביניים, מתי מסתיימים הלימודים, עוד כמה זמן החופש הגדול, עוד כמה זמן החופש הגדול לא כולל שבתות וחגים, ימי לימודים עד החופש הגדול, עוד כמה ימים יש חופש גדול, החופש הגדול 2026">
     <meta name="author" content="Neto App">
     <link rel="canonical" href="http://neto-hofesh.co.il/">
 
@@ -43,7 +43,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="http://neto-hofesh.co.il/">
     <meta property="og:title" content="מתי החופש הגדול? ספירה לאחור בלי שבתות שישי וחגים | נטו חופש">
-    <meta property="og:description" content="בודקים מתי החופש הגדול? מחשבון ספירה לאחור המראה בדיוק כמה ימים נשארו לחופש הגדול בלי שישי שבת וחגים! כנסו לבדוק.">
+    <meta property="og:description" content="שואלים את עצמכם עוד כמה זמן החופש הגדול לא כולל שבתות וחגים? כנסו למחשבון הספירה לאחור המדויק של נטו חופש.">
     <meta property="og:image" content="http://neto-hofesh.co.il/preview-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,6 +78,11 @@
             min-height: 100vh; 
             padding: 20px; 
             overflow-x: hidden;
+            /* מניעת סימון והעתקת טקסט */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .sun-background {
@@ -270,24 +275,24 @@
             40%, 100% { transform: translateY(0); }
         }
 
-        .btn-share { 
-            background: var(--whatsapp-green); color: white; text-align: center; text-decoration: none; padding: 16px; 
-            border-radius: 20px; font-weight: 800; font-size: 17px; display: flex; justify-content: center; 
-            align-items: center; gap: 10px; margin-top: 15px;
-            box-shadow: 0 8px 15px rgba(37, 211, 102, 0.2); width: 100%; border: none;
-            animation: subtle-jump 4s infinite;
+        /* נײַע סטילן פֿאַר די אַקציע קנעפּלעך */
+        .action-buttons-row {
+            display: flex; gap: 10px; margin-top: 18px; margin-bottom: 5px; width: 100%;
+            direction: rtl;
         }
-        .btn-share:hover { background: var(--whatsapp-hover); transform: translateY(-2px); animation-play-state: paused; }
-
-        /* כפתור הוספה למסך הבית */
-        .btn-a2hs {
-            background: #f8fafc; color: var(--text-main); text-align: center; text-decoration: none; padding: 14px; 
-            border-radius: 20px; font-weight: 800; font-size: 16px; display: flex; justify-content: center; 
-            align-items: center; gap: 8px; margin-top: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); width: 100%; border: 2px solid #e2e8f0;
-            cursor: pointer; transition: 0.3s;
+        .btn-action {
+            flex: 1; padding: 14px 4px; border-radius: 18px; font-weight: 800; font-size: 14px;
+            display: flex; justify-content: center; align-items: center; gap: 6px;
+            text-decoration: none; cursor: pointer; transition: all 0.3s; border: none;
+            direction: rtl;
         }
-        .btn-a2hs:hover { background: #f1f5f9; transform: translateY(-2px); }
+        .btn-share-half {
+            background: var(--whatsapp-green); color: white;
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.2); animation: subtle-jump 4s infinite;
+        }
+        .btn-share-half:hover { background: var(--whatsapp-hover); transform: translateY(-2px); animation-play-state: paused; }
+        .btn-a2hs-half { background: #0f172a; color: white; box-shadow: 0 6px 15px rgba(15, 23, 42, 0.2); }
+        .btn-a2hs-half:hover { background: #1e293b; transform: translateY(-2px); }
 
         .reset-btn { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; padding: 8px; font-size: 13px; margin-top: 10px; }
 
@@ -379,6 +384,7 @@
                     <div style="font-weight: 800; color: var(--text-muted);">ימי לימוד נטו!</div>
                     <div id="excluding-label" style="font-size: 14px; font-weight: 600; color: var(--text-muted); margin-top: 8px;"></div>
                 </div>
+
                 <div class="absolute-timer" dir="ltr">
                     <div class="time-box"><div id="abs-days" class="time-val">-</div><div class="time-lbl">ימים</div></div>
                     <div class="time-box"><div id="abs-hours" class="time-val">-</div><div class="time-lbl">שעות</div></div>
@@ -404,19 +410,27 @@
                 </div>
             </div>
             
-            <a href="#" id="share-btn" class="btn-share" onclick="shareWhatsApp(event)" style="margin-top: -5px; margin-bottom: 5px;">שתפו עם הכיתה 🚀</a>
+            <div class="action-buttons-row" style="margin-top: 5px; margin-bottom: 5px; direction: rtl;">
+                <a href="#" id="share-btn" class="btn-action btn-share-half" onclick="shareWhatsApp(event)">
+                    <span style="order: 2;">📢</span>
+                    <span style="order: 1;">שתפו לכיתה</span>
+                </a>
+                <button id="a2hs-btn" class="btn-action btn-a2hs-half" onclick="handleA2HS()">
+                    <span style="order: 2;">📱</span>
+                    <span style="order: 1;">הוסיפו כאפליקציה</span>
+                </button>
+            </div>
             
             <h2 style="font-size: 18px; margin-top: 15px; margin-bottom: 8px; text-align: center;">בחרו יעד לספירה:</h2>
             <div id="holidays-container" style="display: flex; flex-direction: column; gap: 8px;"></div>
-            <button id="a2hs-btn" class="btn-a2hs" style="display: none;">📱 הוסיפו כאפליקציה</button>
             <center><button class="reset-btn" onclick="resetApp()">שינוי הגדרות</button></center>
         </div>
 
         <footer class="seo-footer">
-            <h2>מתי החופש הגדול 2026? ספירה לאחור לחופש הגדול</h2>
-            <p>שואלים את עצמכם <strong>כמה ימים נשארו לחופש הגדול</strong>? או <strong>כמה זמן נשאר לחופש הגדול</strong>? הגעתם למקום הנכון! האתר "נטו חופש" הוא המחשבון המדויק ביותר שיענה לכם על השאלה <strong>כמה ימים נשארו לחופש הגדול בלי שישי שבת וחגים</strong>.</p>
-            <h3>מתי יוצאים לחופש הגדול ומתי מסיימים ללמוד?</h3>
-            <p>לפי <strong>לוח חופשות משרד החינוך</strong>, <strong>תאריך החופש הגדול</strong> משתנה לפי הגיל: בתי הספר היסודיים מסיימים ב-30 ביוני, בעוד שחטיבות הביניים והתיכונים מסיימים ב-19 ביוני (או ב-18 ביוני למי שלא לומד בשישי). אם אתם רוצים לדעת <strong>מתי מסתיימת שנת הלימודים</strong> בדיוק עבורכם, פשוט בחרו את השכבה שלכם במחשבון למעלה וקבלו <strong>ספירה לאחור לחופש הגדול</strong> בזמן אמת, שתראה לכם בדיוק <strong>מתי מסיימים ללמוד</strong> השנה!</p>
+            <h2>מתי החופש הגדול 2026? ספירה לאחור - נטו חופש</h2>
+            <p>שואלים את עצמכם <strong>עוד כמה זמן החופש הגדול לא כולל שבתות וחגים</strong>? או <strong>כמה ימים עד לחופש הגדול</strong>? הגעתם למקום הנכון! האתר "נטו חופש" הוא המחשבון המדויק ביותר שיענה לכם על השאלה <strong>כמה ימי לימודים עד החופש הגדול</strong> נשארו באמת.</p>
+            <h3>מתי מסתיימים הלימודים?</h3>
+            <p>רבים שואלים <strong>עוד כמה ימים יתחיל החופש הגדול לחטיבות הביניים</strong>, ליסודי או לתיכונים. לפי לוח חופשות משרד החינוך, תאריך הסיום משתנה: יסודי ב-30 ביוני, וחטיבות/תיכונים ב-18 או ב-19 ביוני. רוצים לדעת בדיוק <strong>עוד כמה ימים יש חופש גדול</strong> ו-<strong>עוד כמה זמן החופש הגדול</strong> מתחיל אצלכם? פשוט בחרו את השכבה שלכם במחשבון ותקבלו ספירה לאחור מדויקת שמראה <strong>מתי מסתיימים הלימודים</strong>!</p>
             <div class="contact-area">
                 ליצירת קשר, שיתופי פעולה או דיווח על תקלות: 
                 <a href="mailto:levanov.yonatan@gmail.com" class="contact-link">levanov.yonatan@gmail.com</a>
@@ -596,6 +610,7 @@
         let timerInterval = null;
         let dailyTipsState = { date: '', targets: {} };
         let confettiFired = false;
+        let deferredPrompt = null; /* גלאבאלע וואַריאַבל פֿאַר ינסטאַלירונג */
 
         // משתנים לאנימציית המספרים
         let isAnimatingNetDays = false;
@@ -642,35 +657,38 @@
                 navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(() => {});
             }
 
-            let deferredPrompt;
-            const a2hsBtn = document.getElementById('a2hs-btn');
-            const isIos = () => /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
-            const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
+            const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone) || window.matchMedia('(display-mode: standalone)').matches;
 
-            if (isIos() && !isInStandaloneMode()) {
-                a2hsBtn.style.display = 'flex';
-                a2hsBtn.onclick = () => {
-                    trackEvent('open_ios_install_modal');
-                    document.getElementById('ios-modal').style.display = 'flex';
-                };
-            } else {
-                window.addEventListener('beforeinstallprompt', (e) => {
-                    e.preventDefault();
-                    deferredPrompt = e;
-                    a2hsBtn.style.display = 'flex';
-                    a2hsBtn.onclick = async () => {
-                        trackEvent('click_install_pwa');
-                        a2hsBtn.style.display = 'none';
-                        deferredPrompt.prompt();
-                        await deferredPrompt.userChoice;
-                        deferredPrompt = null;
-                    };
-                });
+            /* באַהאַלטן דעם קנעפּל אויב דער אַפּפּ איז שוין אינסטאַלירט */
+            if (isInStandaloneMode()) {
+                const a2hsBtn = document.getElementById('a2hs-btn');
+                if (a2hsBtn) a2hsBtn.style.display = 'none';
             }
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+            });
+
             window.addEventListener('appinstalled', () => {
-                a2hsBtn.style.display = 'none';
+                const a2hsBtn = document.getElementById('a2hs-btn');
+                if (a2hsBtn) a2hsBtn.style.display = 'none';
                 deferredPrompt = null;
             });
+        }
+
+        /* פֿונקציע פֿאַר ינסטאַלירן דעם אַפּפּ צו דעם מסך הבית */
+        function handleA2HS() {
+            if (deferredPrompt) {
+                trackEvent('click_install_pwa');
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then(() => {
+                    deferredPrompt = null;
+                });
+            } else {
+                trackEvent('open_ios_install_modal');
+                document.getElementById('ios-modal').style.display = 'flex';
+            }
         }
 
         function closeIosModal() {
@@ -1021,6 +1039,15 @@
         function updateDashboard() {
             const event = activeEventsList.find(e => e.id === userConfig.activeTargetId);
             if (!event) return;
+            
+            // מנגנון "חצות" - מוודא שהטיפ מתאפס כל יום מחדש, גם אם האתר הושאר פתוח ברקע
+            const nowTime = new Date();
+            const todayStr = `${nowTime.getFullYear()}-${nowTime.getMonth()+1}-${nowTime.getDate()}`;
+            if (dailyTipsState.date && dailyTipsState.date !== todayStr) {
+                loadDailyState();
+                renderTipBox(userConfig.activeTargetId);
+            }
+
             const diff = event.date.getTime() - Date.now();
             if (diff <= 0) {
                 document.getElementById('main-net-days').textContent = "הגיע!";
@@ -1044,6 +1071,37 @@
             const text = `מצאתי אתר שמראה כמה ימי לימוד נטו נשאר עד החופש! 🏖️😱\nכנסו לבדוק >> http://neto-hofesh.co.il/`;
             window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
         }
+
+        // --- הגנות למניעת גניבת קוד והעתקה ---
+        
+        // 1. חסימת קליק ימני
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 2. חסימת קיצורי מקלדת של מפתחים (F12, Ctrl+U, Ctrl+Shift+I)
+        document.addEventListener('keydown', function(e) {
+            // חסימת F12
+            if (e.key === 'F12' || e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+            // חסימת Ctrl+Shift+I / Ctrl+Shift+J (כלים למפתחים)
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.keyCode === 73 || e.keyCode === 74)) {
+                e.preventDefault();
+                return false;
+            }
+            // חסימת Ctrl+U (הצגת מקור הדף)
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.keyCode === 85)) {
+                e.preventDefault();
+                return false;
+            }
+            // חסימת Ctrl+S (שמירת האתר)
+            if (e.ctrlKey && (e.key === 'S' || e.key === 's' || e.keyCode === 83)) {
+                e.preventDefault();
+                return false;
+            }
+        });
     </script>
 </body>
 </html>
