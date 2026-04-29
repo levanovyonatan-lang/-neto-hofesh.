@@ -214,39 +214,99 @@
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             color: var(--text-muted);
-            padding: 14px; 
-            border-radius: 18px; 
+            padding: 16px; 
+            border-radius: 20px; 
             font-size: 15px; 
             font-weight: 900; 
             cursor: pointer;
             width: 100%; 
             display: flex; 
+            flex-direction: column;
             align-items: center; 
             justify-content: center; 
             gap: 8px;
             margin-top: 20px; 
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            line-height: 1.5;
+            text-align: center;
         }
-        .ai-btn:hover {
+        .ai-btn:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-            background: #f1f5f9;
-            border-color: #cbd5e1;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
             color: var(--text-main);
         }
-
-        .ai-tip-result-box {
-            background: #ffffff; border: 2px solid var(--primary); padding: 16px;
-            border-radius: 20px; font-size: 15px; text-align: center; margin-top: 10px;
-            display: none; animation: fadeIn 0.4s; line-height: 1.5; font-weight: 600;
+        .ai-btn.has-tip {
+            background: #ffffff;
+            border-color: var(--primary);
             box-shadow: 0 5px 15px rgba(234, 179, 8, 0.1);
         }
+        .ai-btn:disabled {
+            cursor: default;
+        }
+
+        /* --- עיצוב כפתור ה-VIP (זהוב ויוקרתי בסגנון טינקרז) --- */
+        .vip-funnel-btn {
+            background: linear-gradient(135deg, #ffde21 0%, #ffb300 100%);
+            color: #422006; 
+            padding: 15px;
+            border-radius: 18px;
+            font-size: 16px;
+            font-weight: 900;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #f59e0b;
+            margin-top: 18px;
+            margin-bottom: 5px;
+            box-shadow: 0 6px 12px rgba(251, 191, 36, 0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: vip-pulse-gold 3s infinite;
+        }
+        .vip-funnel-btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.4);
+        }
+
+        @keyframes vip-pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
+            70% { box-shadow: 0 0 0 12px rgba(251, 191, 36, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+        }
+
+        .copy-data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 15px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border: 2px solid #fef08a;
+            transition: all 0.2s;
+        }
+        .copy-data-row:hover { border-color: #f59e0b; background: #fffbeb; }
+
+        .copy-btn-small {
+            background: #fef08a;
+            color: #854d0e;
+            border: 1px solid #fde047;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .copy-btn-small:active { transform: scale(0.95); }
+        .copy-btn-small.copied { background: #dcfce7; color: #166534; border-color: #86efac; }
 
         @keyframes tipUpdateAnim {
-            0% { opacity: 0.4; transform: scale(0.95); background-color: #fefce8; }
-            50% { opacity: 1; transform: scale(1.02); background-color: #ffffff; }
-            100% { opacity: 1; transform: scale(1); background-color: #ffffff; }
+            0% { transform: scale(0.95); background-color: #fefce8; }
+            50% { transform: scale(1.02); background-color: #ffffff; }
+            100% { transform: scale(1); background-color: #ffffff; }
         }
 
         .vacation-length-box {
@@ -400,13 +460,16 @@
                     </div>
                 </div>
 
+                <!-- כפתור הפיתיון ממש מתחת לשעון -->
+                <button id="vip-community-btn" class="vip-funnel-btn" onclick="openVipModal()">
+                    רוצים להרוויח כסף ממשימות בטלפון? הצטרפו לקהילה 💸
+                </button>
+
                 <div class="ai-tools">
                     <button class="ai-btn" id="main-ai-btn" onclick="handleAiTip()">
                         <span id="ai-btn-loader" class="loader"></span>
                         <span id="ai-btn-text">לחצו לטיפ אופטימיות יומי ✨</span>
                     </button>
-                    <div id="ai-btn-replaced-text" style="display: none; text-align: center; font-weight: 700; color: var(--text-muted); margin-top: 15px; font-size: 14px;">טיפ חדש יופיע מחר ✨</div>
-                    <div id="ai-tip-result" class="ai-tip-result-box"></div>
                 </div>
             </div>
             
@@ -450,6 +513,53 @@
                     <p>2. בתפריט שייפתח, גללו קצת למטה ולחצו על השורה <b>"הוסף למסך הבית"</b> (Add to Home Screen ➕).</p>
                 </div>
                 <button class="ios-modal-close" onclick="closeIosModal()">הבנתי!</button>
+            </div>
+        </div>
+
+        <!-- מודל ה-VIP (עיצוב זהוב עם אזהרת חובה) -->
+        <div id="vip-modal" class="ios-modal-overlay" style="align-items: center; z-index: 9999;">
+            <div class="ios-modal-content" style="max-width: 400px; max-height: 95vh; overflow-y: auto; position: relative; text-align: right; padding: 35px 25px;">
+                <button onclick="closeVipModal()" style="position: absolute; top: 15px; left: 15px; background: none; border: none; font-size: 24px; color: #cbd5e1; cursor: pointer; padding: 5px; line-height: 1;">✖</button>
+
+                <h3 style="font-size: 20px; font-weight: 900; color: #1e293b; margin-bottom: 10px; line-height: 1.2; white-space: nowrap;">מתחילים לעשות <span style="color: #ca8a04;">כסף מהטלפון</span> 💸</h3>
+                
+                <p style="font-weight: 500; font-size: 15.5px; color: #475569; margin-bottom: 25px; line-height: 1.5;">
+                    בקהילת <b>Teenkerz</b> מרוויחים כסף אמיתי על השתתפות בסקרים קלילים, טעימות של חטיפים חדשים וקמפיינים שווים.
+                </p>
+
+                <!-- אזור הצטרפות (חובה להרשמה) -->
+                <div style="background: #fffdf0; padding: 22px 18px 18px 18px; border-radius: 20px; border: 2px solid #fcd34d; margin-bottom: 25px; position: relative; box-shadow: 0 4px 15px rgba(254, 240, 138, 0.3);">
+                    
+                    <!-- תווית אזהרה מעודנת אך בולטת -->
+                    <div style="position: absolute; top: -14px; right: 18px; background: #f97316; color: white; font-size: 13px; font-weight: 900; padding: 4px 14px; border-radius: 20px; box-shadow: 0 4px 8px rgba(249, 115, 22, 0.3);">
+                        חובה להרשמה
+                    </div>
+
+                    <div style="font-weight: 900; font-size: 17px; color: #854d0e; margin-bottom: 8px; margin-top: 5px;">איך נכנסים למסלול המרוויחים? 💰</div>
+                    <p style="font-size: 14px; color: #92400e; margin-bottom: 18px; line-height: 1.5; font-weight: 600;">
+                        כדי שהמערכת תזהה ותאשר אתכם, <span style="text-decoration: underline;">חובה</span> להעתיק ולהדביק את הפרטים האלו בטופס (בשאלה "הגעתם דרך חבר?"):
+                    </p>
+                    
+                    <div class="copy-data-row">
+                        <div>
+                            <div style="font-size: 12px; color: #b45309; margin-bottom: 2px; font-weight: 700;">שם מלא של החבר:</div>
+                            <div style="font-weight: 900; font-size: 18px; color: #0f172a;">חופש</div>
+                        </div>
+                        <button class="copy-btn-small" id="copy-name-btn" onclick="copyToClipboard('חופש', 'copy-name-btn')">העתק 📋</button>
+                    </div>
+
+                    <div class="copy-data-row" style="margin-bottom: 0;">
+                        <div>
+                            <div style="font-size: 12px; color: #b45309; margin-bottom: 2px; font-weight: 700;">טלפון של החבר:</div>
+                            <div style="font-weight: 900; font-size: 18px; color: #0f172a;" dir="ltr">0542633610</div>
+                        </div>
+                        <button class="copy-btn-small" id="copy-phone-btn" onclick="copyToClipboard('0542633610', 'copy-phone-btn')">העתק 📋</button>
+                    </div>
+                </div>
+
+                <button class="vip-funnel-btn" style="margin-top: 0; padding: 18px; font-size: 17px; box-shadow: 0 8px 20px rgba(234, 179, 8, 0.3);" onclick="goToRegistration()">
+                    אני רוצה להירשם בחינם >>
+                </button>
             </div>
         </div>
     </main>
@@ -696,6 +806,52 @@
             document.getElementById('ios-modal').style.display = 'none';
         }
 
+        // --- פונקציות משפך המרות (VIP) ---
+        function openVipModal() {
+            trackEvent('open_vip_funnel');
+            document.getElementById('vip-modal').style.display = 'flex';
+        }
+
+        function closeVipModal() {
+            document.getElementById('vip-modal').style.display = 'none';
+        }
+
+        // פונקציית העתקה חכמה שיודעת להעתיק גם את השם וגם את הטלפון
+        function copyToClipboard(textToCopy, btnId) {
+            // יצירת אלמנט זמני להעתקה שעובד בכל הטלפונים
+            const tempInput = document.createElement("input");
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
+            // פידבק למשתמש ספציפית על הכפתור שלחצו עליו
+            const btn = document.getElementById(btnId);
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = "הועתק! ✔️";
+            btn.classList.add('copied');
+            
+            if (textToCopy === "חופש") {
+                trackEvent('copy_friend_name');
+            } else {
+                trackEvent('copy_friend_phone');
+            }
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('copied');
+            }, 2500);
+        }
+
+        function goToRegistration() {
+            trackEvent('click_vip_registration_link');
+            const registrationLink = "https://teenk.co.il/teenkerz/"; 
+            window.open(registrationLink, '_blank');
+        }
+        // ------------------------------------
+
         function loadDailyState() {
             const now = new Date();
             const todayStr = `${now.getFullYear()}-${now.getMonth()+1}-${now.getDate()}`;
@@ -717,36 +873,43 @@
             if (typeof currentState === 'number') currentState = { clicks: currentState, texts: [] };
             if (!currentState) currentState = { clicks: 0, texts: [] };
 
-            const tipBox = document.getElementById('ai-tip-result');
             const btn = document.getElementById('main-ai-btn');
             const btnText = document.getElementById('ai-btn-text');
-            const replacedText = document.getElementById('ai-btn-replaced-text');
 
-            // אם כבר יש טיפים שנוצרו היום, מציגים את האחרון שבהם!
+            // אם כבר יש טיפים שנוצרו היום, מציגים את האחרון שבהם בתוך הכפתור!
             if (currentState.clicks > 0 && currentState.texts && currentState.texts.length > 0) {
                 const latestTip = currentState.texts[currentState.texts.length - 1];
-                const title = currentState.clicks === 1 ? "הטיפ היומי:" : "טיפ נוסף:";
+                const title = currentState.clicks === 1 ? "הטיפ היומי" : "טיפ נוסף";
                 
-                tipBox.innerHTML = `<b>${title}</b> ✨<br>${latestTip}`;
-                tipBox.style.display = 'block';
+                let extraHTML = currentState.clicks === 1 
+                    ? `<span style="font-size: 13px; color: var(--primary-hover); margin-top: 8px; display: block;">לחצו לטיפ נוסף ✨</span>`
+                    : `<span style="font-size: 13px; color: var(--text-muted); margin-top: 8px; display: block;">טיפ חדש יופיע מחר ✨</span>`;
 
-                // מנקה את העמעום מהטעינה ומפעיל אנימציית "קפיצה" כדי שיראו את ההחלפה
-                tipBox.style.transition = 'none';
-                tipBox.style.animation = 'none';
-                void tipBox.offsetWidth; // מאפס את האנימציה
-                tipBox.style.animation = 'tipUpdateAnim 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
-            } else {
-                tipBox.style.display = 'none';
-            }
+                btnText.innerHTML = `<b style="color: var(--text-main); font-size: 16px;">${title} ✨</b><br><span style="color: var(--text-main); font-weight: 600;">${latestTip}</span>${extraHTML}`;
+                
+                btn.classList.add('has-tip');
 
-            // מעדכן את מצב הכפתור
-            if (currentState.clicks >= 2) {
-                btn.style.display = 'none';
-                replacedText.style.display = 'block';
+                // מנקה את העמעום מהטעינה ומפעיל אנימציית "קפיצה"
+                btn.style.transition = 'none';
+                btn.style.animation = 'none';
+                void btn.offsetWidth; // מאפס את האנימציה
+                btn.style.animation = 'tipUpdateAnim 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+                
+                // מחזיר את הגדרות המעבר כדי שהאנימציית ריחוף (Hover) תעבוד מחדש
+                setTimeout(() => { btn.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'; }, 600);
+
+                if (currentState.clicks >= 2) {
+                    btn.disabled = true;
+                    btn.style.pointerEvents = 'none';
+                } else {
+                    btn.disabled = false;
+                    btn.style.pointerEvents = 'auto';
+                }
             } else {
-                btn.style.display = 'flex';
-                btnText.textContent = currentState.clicks === 1 ? "טיפ נוסף ✨" : "לחצו לטיפ אופטימיות יומי ✨";
-                replacedText.style.display = 'none';
+                btnText.innerHTML = "לחצו לטיפ אופטימיות יומי ✨";
+                btn.classList.remove('has-tip');
+                btn.disabled = false;
+                btn.style.pointerEvents = 'auto';
             }
         }
 
@@ -802,19 +965,12 @@
             const btnText = document.getElementById('ai-btn-text');
             const loader = document.getElementById('ai-btn-loader');
             
-            // אפקט טעינה מבלי להעלים את הטיפים הקודמים
+            // אפקט טעינה ישירות על הכפתור עצמו
             btn.style.opacity = '0.7';
             btn.style.pointerEvents = 'none';
+            btn.style.transform = 'scale(0.98)';
             loader.style.display = 'inline-block';
-            btnText.textContent = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
-            
-            // מעמעם את הטיפ הישן בזמן שטוען את החדש
-            const tipBox = document.getElementById('ai-tip-result');
-            if (tipBox.style.display === 'block') {
-                tipBox.style.opacity = '0.4';
-                tipBox.style.transform = 'scale(0.98)';
-                tipBox.style.transition = 'all 0.3s ease';
-            }
+            btnText.innerHTML = loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)];
             
             const target = activeEventsList.find(e => e.id === targetId);
             const netDays = calculateNetDays(target.date);
@@ -835,7 +991,7 @@
                 saveDailyState();
                 
                 btn.style.opacity = '1';
-                btn.style.pointerEvents = 'auto';
+                btn.style.transform = 'scale(1)';
                 loader.style.display = 'none'; 
 
                 renderTipBox(targetId);
@@ -876,10 +1032,12 @@
             confettiFired = false;
             document.getElementById('main-screen').style.display = 'none';
             document.getElementById('setup-screen').style.display = 'flex';
-            document.getElementById('ai-tip-result').style.display = 'none';
-            document.getElementById('main-ai-btn').style.display = 'flex';
-            document.getElementById('ai-btn-text').textContent = "לחצו לטיפ אופטימיות יומי ✨";
-            document.getElementById('ai-btn-replaced-text').style.display = 'none';
+            
+            const btn = document.getElementById('main-ai-btn');
+            document.getElementById('ai-btn-text').innerHTML = "לחצו לטיפ אופטימיות יומי ✨";
+            btn.classList.remove('has-tip');
+            btn.disabled = false;
+            btn.style.pointerEvents = 'auto';
         }
 
         function updateSchoolSelection(radio) {
@@ -967,6 +1125,16 @@
             document.getElementById('main-screen').style.display = 'flex';
             document.getElementById('excluding-label').textContent = userConfig.studyFriday ? "(בניכוי חגים ושבתות)" : "(בניכוי חגים, שישי ושבת)";
             
+            // הסתרת כפתור הקהילה (VIP) לתלמידי יסודי
+            const vipBtn = document.getElementById('vip-community-btn');
+            if (vipBtn) {
+                if (userConfig.schoolType === 'elem') {
+                    vipBtn.style.display = 'none'; // מסתיר ביסודי
+                } else {
+                    vipBtn.style.display = 'flex'; // מציג בחטיבה ותיכון
+                }
+            }
+
             const summerHighObj = allTargets.find(t => t.id === 'summerHigh');
             if (summerHighObj) {
                 if (!userConfig.studyFriday) {
